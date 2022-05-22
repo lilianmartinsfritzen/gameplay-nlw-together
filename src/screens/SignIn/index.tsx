@@ -6,8 +6,10 @@ import {
   StatusBar
 } from 'react-native'
 
-import Illustration from '../../assets/illustration.png'
+import { ButtonIcon } from '../../components/ButtonIcon'
+
 import { styles } from './styles'
+import Illustration from '../../assets/illustration.png'
 
 export function SignIn() {
   return (
@@ -34,6 +36,11 @@ export function SignIn() {
           Crie grupos para jogar seus games{`\n`}
           favoritos com seus amigos
         </Text>
+
+        <ButtonIcon 
+          title='Entrar com Discord'
+          activeOpacity={0.6}
+        />
       </View>
     </View>
   )

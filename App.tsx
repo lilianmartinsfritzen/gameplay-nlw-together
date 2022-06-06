@@ -1,3 +1,5 @@
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+
 import React from 'react'
 import { StatusBar } from 'react-native'
 
@@ -22,13 +24,15 @@ export default function App() {
   }
 
   return (
-    <Background>
-      <StatusBar 
-        barStyle='light-content'
-        backgroundColor='transparent'
-        translucent 
-      />
-      <Routes />
-    </Background>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Background>
+        <StatusBar 
+          barStyle='light-content'
+          backgroundColor='transparent'
+          translucent 
+        />
+        <Routes />
+      </Background>
+    </GestureHandlerRootView>
   )
 }

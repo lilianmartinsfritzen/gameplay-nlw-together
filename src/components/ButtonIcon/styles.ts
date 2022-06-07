@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     color: theme.colors.heading,
+    fontFamily: theme.fonts.text500,
     fontSize: 15
   }
 })

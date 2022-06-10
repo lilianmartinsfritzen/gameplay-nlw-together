@@ -45,10 +45,13 @@ export function Header({
       </Text>
 
       {
-        action &&
-        <View>
-          { action }
-        </View>
+        action
+        ?
+          <View>
+            { action }
+          </View>
+        :
+          <View style={{ width: 24 }}/>
       }
 
     </LinearGradient>

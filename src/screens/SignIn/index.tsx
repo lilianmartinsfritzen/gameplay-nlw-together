@@ -11,9 +11,13 @@ import { Background } from '../../components/Background'
 
 import { styles } from './styles'
 import Illustration from '../../assets/illustration.png'
+import { useAuth } from '../../hooks/auth'
 
 export function SignIn() {
   const navigation = useNavigation()
+
+  const { user } = useAuth()
+  console.log(user)
 
   function handleSignIn() {
     navigation.dispatch(

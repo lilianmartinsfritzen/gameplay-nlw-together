@@ -12,7 +12,7 @@ import { Profile } from '../../components/Profile';
 
 import { styles } from './styles';
 
-export function Home() {
+export function HomeScreen() {
   const [category, setCategory] = useState('')
   const navigation = useNavigation()
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, FlatList, ImageBackground, Text, View } from 'react-native'
+import { Alert, FlatList, ImageBackground, Platform, Share, Text, View } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 
@@ -52,6 +52,19 @@ export function AppointmentDetails() {
     }
   }
 
+  console.log(widget.instant_invite)
+
+  function handleShareInvitation() {
+    const message = Platform.OS === 'ios' 
+    ? `Junte-se a ${guildSelected.guild.name}`
+    : widget.instant_invite
+
+    Share.share({
+      message,
+      url: widget.instant_invite
+    })
+  }
+
   useEffect(() => {
     fetchGuildWidget()
   },[])
@@ -61,7 +74,9 @@ export function AppointmentDetails() {
       <Header
         title='Detalhes'
         action={
-          <BorderlessButton>
+          <BorderlessButton
+            onPress={handleShareInvitation}
+          >
             <Fontisto name='share' size={24} color={theme.colors.primary} />
           </BorderlessButton>
         }

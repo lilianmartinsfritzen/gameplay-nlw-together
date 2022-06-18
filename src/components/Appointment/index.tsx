@@ -52,7 +52,8 @@ export function Appointment({
             </Text>
 
             <Text style={styles.category}>
-              { category.title }
+              PRECISA ARRUMAR
+              {/* { category.title } */}
             </Text>
           </View>
 

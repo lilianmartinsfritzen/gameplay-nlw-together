@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, FlatList, ImageBackground, Platform, Share, Text, View } from 'react-native'
+import { 
+  Alert, 
+  FlatList, 
+  ImageBackground, 
+  Platform, 
+  Share, 
+  Text, 
+  View 
+} from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 
+import * as Linking from 'expo-linking'
 import { Fontisto } from '@expo/vector-icons'
 
 import { api } from '../../services/api'
 
+import { Member, MemberProps } from '../../components/Member'
 import { AppointmentProps } from '../../components/Appointment'
 import { ListDivider } from '../../components/ListDivider'
 import { Background } from '../../components/Background'
 import { ListHeader } from '../../components/ListHeader'
 import { ButtonIcon } from '../../components/ButtonIcon'
 import { Header } from '../../components/Header'
-import { Member, MemberProps } from '../../components/Member'
+import { Load } from '../../components/Load'
 
 import { styles } from './styles'
 import { theme } from '../../global/styles/theme'
 import BannerImg from '../../assets/banner.png'
-import { Load } from '../../components/Load'
 
 type Params = {
   guildSelected: AppointmentProps
@@ -65,6 +74,10 @@ export function AppointmentDetails() {
     })
   }
 
+  function handleOpenGuild() {
+    Linking.openURL(widget.instant_invite)
+  }
+
   useEffect(() => {
     fetchGuildWidget()
   },[])
@@ -74,11 +87,12 @@ export function AppointmentDetails() {
       <Header
         title='Detalhes'
         action={
-          <BorderlessButton
-            onPress={handleShareInvitation}
-          >
-            <Fontisto name='share' size={24} color={theme.colors.primary} />
-          </BorderlessButton>
+          guildSelected.guild.owner &&
+            <BorderlessButton
+              onPress={handleShareInvitation}
+            >
+              <Fontisto name='share' size={24} color={theme.colors.primary} />
+            </BorderlessButton>
         }
       />
 
@@ -109,9 +123,15 @@ export function AppointmentDetails() {
         </>
       )}
 
-      <View style={styles.footer}>
-        <ButtonIcon title='Entrar na partida' />
-      </View>
+      { guildSelected.guild.owner ?
+        <View style={styles.footer}>
+          <ButtonIcon 
+            title='Entrar na partida' 
+            onPress={handleOpenGuild}
+          />
+        </View>
+        : <View />
+      }
     </Background>
   );
 }

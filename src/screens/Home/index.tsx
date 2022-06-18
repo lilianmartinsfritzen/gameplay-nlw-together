@@ -26,10 +26,13 @@ export function Home() {
     categoryId === category ? setCategory('') : setCategory(categoryId)
   }
 
-  function handleAppointmentDetails() {
+  function handleAppointmentDetails(guildSelected: AppointmentProps) {
     navigation.dispatch(
       CommonActions.navigate({
         name: 'AppointmentDetails',
+        params: {
+          guildSelected
+        }
       })
     );
   }
@@ -81,7 +84,10 @@ export function Home() {
             data={appointments}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <Appointment data={item} onPress={handleAppointmentDetails} />
+              <Appointment 
+                data={item} 
+                onPress={() => handleAppointmentDetails(item)} 
+              />
             )}
             ItemSeparatorComponent={() => <ListDivider />}
             contentContainerStyle={{ paddingBottom: 69 }}

@@ -16,7 +16,7 @@ import { COLLECTION_APPOINTMENTS } from '../../configs/dbStorage'
 
 import { styles } from './styles'
 
-export function Home() {
+export function HomeScreen() {
   const [category, setCategory] = useState('')
   const [loading, setLoading] = useState(true)
   const [appointments, setAppointments] = useState<AppointmentProps[]>([])

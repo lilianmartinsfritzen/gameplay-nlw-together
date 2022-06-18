@@ -39,7 +39,10 @@ export function Appointment({
           style={styles.guildIconContainer}
           colors={[secondary50, secondary70]}
         >
-          <GuildIcon />
+          <GuildIcon 
+            guildId={data.guild.id}
+            iconId={data.guild.icon}
+          />
         </LinearGradient>
 
         <View style={styles.content}>

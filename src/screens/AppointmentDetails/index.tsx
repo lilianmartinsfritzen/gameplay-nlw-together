@@ -61,8 +61,6 @@ export function AppointmentDetails() {
     }
   }
 
-  console.log(widget.instant_invite)
-
   function handleShareInvitation() {
     const message = Platform.OS === 'ios' 
     ? `Junte-se a ${guildSelected.guild.name}`
